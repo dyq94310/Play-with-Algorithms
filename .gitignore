@@ -1,3 +1,10 @@
+##########################
+# Jetbrains Ignore files #
+##########################
+*.iml
+.idea/
+cmake-build-debug
+
 # Prerequisites
 *.d
 
