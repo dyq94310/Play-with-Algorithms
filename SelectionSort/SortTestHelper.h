@@ -30,6 +30,26 @@ namespace SortTestHelper {
         }
         cout << endl;
     }
+
+    template<typename T>
+    void sortAesTrue(T arr[], int n) {
+        for (int i = 0; i < n - 1; ++i) {
+            assert(arr[i] >= arr[i + 1]);
+        }
+        return;
+    }
+
+
+    template<typename T>
+    void testSort(string sortName, void(*sort)(T[], int), T arr[], int n) {
+        clock_t startTime = clock();
+        sort(arr, n);
+        clock_t endTime = clock();
+        cout << sortName << ":" << double(endTime - startTime) / CLOCKS_PER_SEC << "s" << endl;
+        sortAesTrue(arr, n);
+        return;
+    }
 }
+
 
 #endif //SELECTIONSORT_SORTTESTHELPER_H

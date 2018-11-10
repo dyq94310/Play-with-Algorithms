@@ -3,4 +3,4 @@ project(SelectionSort)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(SelectionSort main.cpp SortTestHelper.h)
+add_executable(SelectionSort main.cpp SortTestHelper.h Student.h)
