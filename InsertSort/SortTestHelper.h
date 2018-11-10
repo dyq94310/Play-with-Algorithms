@@ -37,7 +37,6 @@ namespace SortTestHelper {
         for (int i = 0; i < n - 1; ++i) {
             assert(arr[i] >= arr[i + 1]);
         }
-        return;
     }
 
 
@@ -48,7 +47,13 @@ namespace SortTestHelper {
         clock_t endTime = clock();
         cout << sortName << ":" << double(endTime - startTime) / CLOCKS_PER_SEC << "s" << endl;
         sortAesTrue(arr, n);
-        return;
+    }
+
+    template<typename T>
+    T *copyArray(T *arr, int n) {
+        T *t = new T[n];
+        copy(arr, arr + n, t);
+        return t;
     }
 }
 

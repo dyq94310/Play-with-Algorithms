@@ -25,6 +25,7 @@ int main() {
     Student student[] = {{"AStu", 100},
                          {"BStu", 101},
                          {"CStu", 93}};
+
     selectionSort(student, 3);
     SortTestHelper::printArray(student, 3);
 
