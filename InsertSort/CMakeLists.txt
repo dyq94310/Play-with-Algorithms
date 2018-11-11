@@ -3,4 +3,4 @@ project(InsertSort)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(InsertSort main.cpp InsertSortMethod.h)
+add_executable(InsertSort main.cpp InsertSortMethod.h SelectionSort.h)
