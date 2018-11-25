@@ -6,7 +6,7 @@
 #include "ShellSort.h"
 
 int main() {
-    int n = 100000;
+    int n = 8;
     int *arr = SortTestHelper::generateRandomArray(n, 1, n);
     int *arrb = SortTestHelper::copyArray(arr, n);
     int *arrc = SortTestHelper::copyArray(arr, n);

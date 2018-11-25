@@ -13,7 +13,7 @@ namespace ShellSort {
     template<typename T>
     void shellSort(T *arr, int n) {
         //选取步长
-        for (int h = n / step; h > 0; h = h / step) {
+        for (int h = n / step; h > 0; h = (h + 1) / step) {
             //选择头指针
             for (int i = 0; i < h; ++i) {
                 //插入排序
