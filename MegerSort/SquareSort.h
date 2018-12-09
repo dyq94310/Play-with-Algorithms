@@ -10,6 +10,7 @@
 using namespace std;
 
 namespace SquareSort {
+
     //插入排序,降序
     template<typename T>
     void insertSort(T *arr, int n) {
@@ -19,6 +20,21 @@ namespace SquareSort {
 
             //每一数都和前面的数值作比较
             for (j = i; ((j > 0) && (temp > arr[j - 1])); --j) {
+                arr[j] = arr[j - 1];
+            }
+            arr[j] = temp;
+        }
+    }
+
+    //插入排序,对[l,r]区间的元素进行插入排序
+    template<typename T>
+    void insertSort(T *arr, int l, int r) {
+        for (int i = l; i <= r; ++i) {
+            T temp = arr[i];
+            int j;
+
+            //每一数都和前面l数值作比较，记住j>l 不是>0
+            for (j = i; ((j > l) && (temp > arr[j - 1])); --j) {
                 arr[j] = arr[j - 1];
             }
             arr[j] = temp;

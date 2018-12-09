@@ -7,13 +7,14 @@
 
 
 #include <iostream>
+#include "SquareSort.h"
 
 using namespace std;
 
 namespace MegerSort {
 
 
-    //左右两边的进行归并排序
+    //左右两边的进行合并
     template<typename T>
     void __Meger(T *arr, int l, int mid, int r) {
 
@@ -55,10 +56,12 @@ namespace MegerSort {
     }
 
 
+    //对arr数组的[L,r]区间内的进行归并排序
     template<typename T>
     void __MegerSort(T *arr, int l, int r) {
         //同一个元素不进行排序
-        if (l >= r) {
+        if (r - l <= 16) {
+            SquareSort::insertSort(arr, l, r);
             return;
         }
         //二分mid：左边最后一个下标
@@ -67,11 +70,15 @@ namespace MegerSort {
         //对左右两边分别进行归并排序;
         __MegerSort(arr, l, mid);
         __MegerSort(arr, mid + 1, r);
-        //排序后左右两边进行合并
-        __Meger(arr, l, mid, r);
+        //只有第二个数组比第一个数组的尾部大时，才进行合并。
+        if (arr[mid] < arr[mid + 1]) {
+            //排序后左右两边进行合并
+            __Meger(arr, l, mid, r);
+        }
     }
 
 
+    //归并排序 对数组arr的n个元素进行归并排序
     template<typename T>
     void MegerSort(T *arr, int n) {
 
