@@ -55,16 +55,17 @@ int main() {
 
     //测试二
     int m = 50000000;
-
     int *BarrA = SortTestHelper::generateRandomArray(m, 1, m);
     int *BarrB = SortTestHelper::copyArray(BarrA, m);
+    int *BarrC = SortTestHelper::copyArray(BarrA, m);
     SortTestHelper::testSort("AscArray:shellSort", SquareSort::shellSort, BarrA, m);
     SortTestHelper::testSort("AscArray:MergeSort", MegerSort::MegerSort, BarrB, m);
-
+    SortTestHelper::testSort("AscArray:MergeSortBU", MegerSort::MegerSortBU, BarrC, m);
     /*
      * 差距较大
-     * AscArray:shellSort:46.51s
-     * AscArray:MergeSort:18.625s
+     *  AscArray:shellSort:49.545s
+     *  AscArray:MergeSort:13.819s
+     *  AscArray:MergeSortBU:15.264s
      */
     return 0;
 }

@@ -85,6 +85,31 @@ namespace MegerSort {
         //归并排序
         __MegerSort(arr, 0, n - 1);
     }
+
+    //归并排序 自底向上归并 使用迭代的方法
+    template<typename T>
+    void MegerSortBU(T *arr, int n) {
+
+        //左右数组的长度，每次增加两倍
+        for (int size = 1; size < n; size = 2 * size) {
+
+            //需要每次移动两个size
+            for (int i = 0; i + size < n; i += 2 * size) {
+                //元素少于16个时，使用插入排序
+                if (size <= 16) {
+                    SquareSort::insertSort(arr, i, min(i + 2 * size - 1, n - 1));
+                    continue;
+                }
+
+                //只有右边尾部比左边大的时候，才进行归并
+                if (arr[i + size - 1] < arr[i + size]) {
+                    //对左右两边的元素进行归并，因为是从底向上，所以一开始就是有序的
+                    __Meger(arr, i, i + size - 1, min(i + 2 * size - 1, n - 1));
+                }
+            }
+        }
+
+    }
 }
 
 
