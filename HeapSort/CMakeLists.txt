@@ -3,4 +3,4 @@ project(HeapSort)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(HeapSort main.cpp MaxHeap.cpp MaxHeap.h)
+add_executable(HeapSort main.cpp MaxHeap.cpp MaxHeap.h IndexMaxHeap.h)

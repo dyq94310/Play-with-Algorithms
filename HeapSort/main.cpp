@@ -1,10 +1,13 @@
 #include <iostream>
 #include "MaxHeap.h"
+#include "IndexMaxHeap.h"
 #include "SortTestHelper.h"
 
 int main() {
-    int n = 10000;
-    auto *heap = new MaxHeap<int>(n);
+    int n = 100;
+//    auto *heap = new MaxHeap<int>(n);
+
+    auto *heap = new IndexMaxHeap<int>(n);
     int *arr = SortTestHelper::generateRandomArray(n, 0, n);
 
     for (int i = 0; i < n; ++i) {
@@ -19,6 +22,7 @@ int main() {
         arrB[j] = heap->getMaxValue();
     }
 
-    SortTestHelper::sortAesTrue(arrB, n);
+    SortTestHelper::printArray(arrB, n);
+//    SortTestHelper::sortAesTrue(arrB, n);
     return 0;
 }
