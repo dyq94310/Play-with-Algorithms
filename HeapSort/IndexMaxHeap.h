@@ -25,7 +25,8 @@ private:
     //put the value up
     void shiftUp(int index) {
         while (index > 1 && date[indexHeap[index]] > date[indexHeap[index / 2]]) {
-            swap(indexHeap[index /= 2], indexHeap[index]);
+            swap(indexHeap[index / 2], indexHeap[index]);
+            index /= 2;
         }
     }
 
@@ -33,17 +34,18 @@ private:
     void shiftDown(int index) {
 
         while (2 * index <= count) {
+
             int swapIndex = 2 * index;
 
             //选取大的子节点
-            if ((swapIndex + 1 < count) && date[indexHeap[swapIndex + 1]] > date[indexHeap[swapIndex]]) {
+            if ((swapIndex + 1 <= count) && date[indexHeap[swapIndex + 1]] > date[indexHeap[swapIndex]]) {
                 swapIndex++;
             }
             if (date[indexHeap[index]] >= date[indexHeap[swapIndex]]) {
                 break;
             }
             //位置更换后 修改index
-            swap(date[indexHeap[swapIndex]], date[indexHeap[index]]);
+            swap(indexHeap[swapIndex], indexHeap[index]);
             index = swapIndex;
         }
     }
