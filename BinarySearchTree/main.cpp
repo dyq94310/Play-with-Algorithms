@@ -32,11 +32,11 @@ int main() {
     }
 
     // 输出圣经中god一词出现的频率
-    if (bst.contain("god"))
+    if (bst.contain("god")) {
         cout << "'god' : " << *bst.search("god") << endl;
-    else
+    } else {
         cout << "No word 'god' in " << filename << endl;
-
+    }
 //        time_t endTime = clock();
 //
 //        cout << "BST , time: " << double(endTime - startTime) / CLOCKS_PER_SEC << " s." << endl;

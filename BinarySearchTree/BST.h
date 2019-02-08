@@ -24,7 +24,7 @@ private:
         Node(KEY key, VALUE value) {
             this->key = key;
             this->value = value;
-            this->left = this->right = NULL;
+            this->left = this->right = nullptr;
         }
     };
 
@@ -60,7 +60,7 @@ private:
         if (node->key == key) {
             return true;
         }
-        return (node->key > key) ? contain(node->left, key) : contain(node->right->key);
+        return (node->key > key) ? contain(node->left, key) : contain(node->right, key);
     }
 
     VALUE *search(Node *node, KEY key) {
@@ -71,7 +71,44 @@ private:
             return &(node->value);
         }
         return node->key > key ? search(node->left, key) : search(node->right, key);
+    }
 
+
+    //前序遍历
+    void preOrder(Node *node) {
+        if (node != nullptr) {
+            cout << node->value << endl;
+            preOrder(node->left);
+            preOrder(node->right);
+        }
+    }
+
+
+    //中序遍历
+    void inOrder(Node *node) {
+        if (node != nullptr) {
+            preOrder(node->left);
+            cout << node->value << endl;
+            preOrder(node->right);
+        }
+    }
+
+
+    void postOrder(Node *node) {
+        if (node != nullptr) {
+            postOrder(node->left);
+            postOrder(node->right);
+            cout << node->value << endl;
+        }
+    }
+
+    void destroy(Node *node) {
+        if (node != nullptr) {
+            destroy(node->left);
+            destroy(node->right);
+            delete node;
+            count--;
+        }
     }
 
 public:
@@ -81,7 +118,8 @@ public:
     }
 
     ~BST() {
-        //TODO
+        //使用后序遍历来释放Node资源
+        destroy(root);
     }
 
     bool isEmpty() {
@@ -98,6 +136,18 @@ public:
 
     VALUE *search(KEY key) {
         return search(root, key);
+    }
+
+    void preOrder() {
+        preOrder(root);
+    }
+
+    void inOrder() {
+        inOrder(root);
+    }
+
+    void postOrder() {
+        postOrder(root);
     }
 
 };
