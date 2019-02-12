@@ -5,7 +5,6 @@
 #ifndef BINARYSEARCHTREE_BST_H
 #define BINARYSEARCHTREE_BST_H
 
-
 #include <iostream>
 
 using namespace std;
@@ -13,8 +12,8 @@ using namespace std;
 //二分搜索树
 template<typename KEY, typename VALUE>
 class BST {
-private:
 
+private:
     struct Node {
         KEY key;
         VALUE value;
@@ -130,6 +129,7 @@ public:
         root = insert(root, key, value);
     }
 
+    // 查看二分搜索树中是否存在键key
     bool contain(KEY key) {
         return contain(root, key);
     }

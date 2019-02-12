@@ -37,6 +37,8 @@ int main() {
     } else {
         cout << "No word 'god' in " << filename << endl;
     }
+
+
 //        time_t endTime = clock();
 //
 //        cout << "BST , time: " << double(endTime - startTime) / CLOCKS_PER_SEC << " s." << endl;
