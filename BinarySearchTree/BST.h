@@ -37,7 +37,7 @@ private:
             count++;
             return new Node(key, value);
         }
-        //递归
+        //递归,如果元素相同则更新
         if (node->key == key) {
             node->value = value;
         } else if (node->key > key) {
@@ -46,7 +46,6 @@ private:
         } else {
             node->right = insert(node->right, key, value);
         }
-
         return node;
     }
 
@@ -76,7 +75,7 @@ private:
     //前序遍历
     void preOrder(Node *node) {
         if (node != nullptr) {
-            cout << node->value << endl;
+            cout << node->key << endl;
             preOrder(node->left);
             preOrder(node->right);
         }
@@ -86,9 +85,9 @@ private:
     //中序遍历
     void inOrder(Node *node) {
         if (node != nullptr) {
-            preOrder(node->left);
-            cout << node->value << endl;
-            preOrder(node->right);
+            inOrder(node->left);
+            cout << node->key << endl;
+            inOrder(node->right);
         }
     }
 
@@ -97,7 +96,7 @@ private:
         if (node != nullptr) {
             postOrder(node->left);
             postOrder(node->right);
-            cout << node->value << endl;
+            cout << node->key << endl;
         }
     }
 
@@ -150,6 +149,9 @@ public:
         postOrder(root);
     }
 
+    int size() {
+        return count;
+    }
 };
 
 
