@@ -39,8 +39,9 @@ int main() {
 //        cout << "No word 'god' in " << filename << endl;
 //    }
 
-    int n = 10;
-    int *arry = SortTestHelper::generateRandomArray(n, 1, n);
+    int n = 5;
+//    int *arry = SortTestHelper::generateRandomArray(n, 1, n);
+    int *arry = new int[5]{3, 1, 5, 4, 2};
 
     BST<int, int> bst = BST<int, int>();
 
@@ -49,8 +50,9 @@ int main() {
     }
 
     cout << "count:" << bst.size() << endl;
-    //  bst.preOrder();
-    bst.inOrder();
+//      bst.preOrder();
+//    bst.inOrder();
 //    bst.postOrder();
+    bst.leverOrder();
     return 0;
 }
