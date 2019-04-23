@@ -111,6 +111,31 @@ private:
         }
     }
 
+    Node *mininum(Node *node) {
+        if (node->left == nullptr) {
+            return node;
+        }
+        mininum(node->left);
+    }
+
+    Node *maxinum(Node *node) {
+        if (node->right == nullptr) {
+            return node;
+        }
+        mininum(node->right);
+    }
+
+    Node *deleteMin(Node *node) {
+        if (node->left == nullptr) {
+            Node *rightNode = node->right;
+            delete node;
+            count--;
+            return rightNode;
+        }
+        node->left = deleteMin(node->left);
+        return node;
+    }
+
 
 public:
     BST() {
@@ -173,7 +198,20 @@ public:
                 q.push(node->right);
             }
         }
+    }
 
+    //最小值
+    KEY mininum() {
+        return mininum(root)->key;
+    }
+
+    //最小值
+    KEY maxinum() {
+        return maxinum(root)->key;
+    }
+
+    void deleteMin() {
+        deleteMin(root);
     }
 
 };

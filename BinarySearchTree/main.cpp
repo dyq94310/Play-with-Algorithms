@@ -53,6 +53,9 @@ int main() {
 //      bst.preOrder();
 //    bst.inOrder();
 //    bst.postOrder();
-    bst.leverOrder();
+//    bst.leverOrder();
+    cout << bst.mininum() << endl;
+    bst.deleteMin();
+    cout << bst.mininum() << endl;
     return 0;
 }
