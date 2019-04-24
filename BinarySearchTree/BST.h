@@ -63,15 +63,20 @@ private:
     }
 
     VALUE *search(Node *node, KEY key) {
+        Node *sn = searchNode(node, key);
+        return sn == nullptr ? nullptr : &node->value;
+    }
+
+
+    Node *searchNode(Node *node, KEY key) {
         if (node == nullptr) {
             return nullptr;
         }
         if (node->key == key) {
-            return &(node->value);
+            return node;
         }
-        return node->key > key ? search(node->left, key) : search(node->right, key);
+        return node->key > key ? searchNode(node->left, key) : searchNode(node->right, key);
     }
-
 
     //前序遍历
     void preOrder(Node *node) {
@@ -122,7 +127,7 @@ private:
         if (node->right == nullptr) {
             return node;
         }
-        mininum(node->right);
+        maxinum(node->right);
     }
 
     Node *deleteMin(Node *node) {
@@ -136,6 +141,23 @@ private:
         return node;
     }
 
+
+    Node *deleteMax(Node *node) {
+        if (node->right == nullptr) {
+            Node *pNode = node->left;
+            delete node;
+            count--;
+            return pNode;
+        }
+        node->right = deleteMax(node->right);
+        return node;
+    }
+
+    //删除Key
+    void deleteValue(Node *node, KEY key) {
+
+
+    }
 
 public:
     BST() {
@@ -212,6 +234,15 @@ public:
 
     void deleteMin() {
         deleteMin(root);
+    }
+
+
+    void deleteMax() {
+        deleteMax(root);
+    }
+
+    void deleteValue(KEY key) {
+        deleteValue(root, key);
     }
 
 };
