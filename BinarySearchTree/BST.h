@@ -26,6 +26,13 @@ private:
             this->value = value;
             this->left = this->right = nullptr;
         }
+
+        Node(Node *node) {
+            this->key = node->key;
+            this->value = node->value;
+            this->left = node->left;
+            this->right = node->right;
+        }
     };
 
     Node *root;
@@ -130,7 +137,9 @@ private:
         maxinum(node->right);
     }
 
+
     Node *deleteMin(Node *node) {
+        //找到左边最小值
         if (node->left == nullptr) {
             Node *rightNode = node->right;
             delete node;
@@ -154,9 +163,34 @@ private:
     }
 
     //删除Key
-    void deleteValue(Node *node, KEY key) {
+    Node *deleteValue(Node *node, KEY key) {
+        //找到此Key所在的父亲节点
+        if (node == nullptr) {
+            return nullptr;
+        }
+        if (node->key > key) {
+            node->left = deleteValue(node->left, key);
+        } else if (node->key < key) {
+            node->right = deleteValue(node->right, key);
+        } else {
+            //当前节点就为需要删除的节点
+            //找右孩子的最小值，替换当前节点
+            //如果当前没有右孩子，直接删除就可
+            if (node->right == nullptr) {
+                Node *leftNode = node->left;
+                delete node;
+                count--;
+                return leftNode;
+            }
 
+            Node *newNode = new Node(mininum(node->right));
+            newNode->right = deleteMin(node->right);
+            newNode->left = node->left;
 
+            delete node;
+
+            return newNode;
+        }
     }
 
 public:
@@ -242,7 +276,7 @@ public:
     }
 
     void deleteValue(KEY key) {
-        deleteValue(root, key);
+        root = deleteValue(root, key);
     }
 
 };
