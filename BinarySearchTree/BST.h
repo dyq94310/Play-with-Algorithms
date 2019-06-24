@@ -183,13 +183,13 @@ private:
                 return leftNode;
             }
 
-            Node *newNode = new Node(mininum(node->right));
-            newNode->right = deleteMin(node->right);
-            newNode->left = node->left;
+            Node *successor = new Node(mininum(node->right));
+            successor->right = deleteMin(node->right);
+            successor->left = node->left;
 
             delete node;
 
-            return newNode;
+            return successor;
         }
     }
 
