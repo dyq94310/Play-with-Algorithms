@@ -15,18 +15,22 @@ namespace UnionFindQuickUnion {
     private:
         int *id;
         int count;
+        int *rank;
 
     public:
         QuickUnion(int n) {
             count = n;
             id = new int[n];
+            rank = new int[n];
             for (int i = 0; i < count; ++i) {
                 id[i] = i;
+                rank[i] = 1;
             }
         }
 
         ~QuickUnion() {
             delete[] id;
+            delete[] rank;
         }
 
         void unionElements(int p, int q) {
@@ -35,7 +39,14 @@ namespace UnionFindQuickUnion {
             if (cop == coq) {
                 return;
             }
-            id[p] = coq;
+            if (rank[cop] > rank[coq]) {
+                id[coq] = cop;
+            } else if (rank[cop] < rank[coq]) {
+                id[p] = coq;
+            } else {
+                id[coq] = cop;
+                rank[cop]++;
+            }
         }
 
         int find(int p) {
