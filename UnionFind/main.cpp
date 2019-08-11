@@ -4,8 +4,8 @@
 #include "QuickUnion.h"
 
 int main() {
-    UnionFindTestHelper::TestUf(100000);
-    UnionFindTestHelper::TestQU(100000);
+    UnionFindTestHelper::TestUf(100);
+    UnionFindTestHelper::TestQU(100);
 
 //    UnionFindQuickUnion::QuickUnion quickUnion = UnionFindQuickUnion::QuickUnion(10);
 //    quickUnion.unionElements(1, 2);
