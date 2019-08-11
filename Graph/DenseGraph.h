@@ -74,23 +74,19 @@ public:
         }
 
         int begin() {
-            index = 0;
-            for (int i = 0; i < G.g[v].size(); ++i) {
-                if (G.g[v][i]) {
-                    index = i;
-                    return i;
+            for (index = 0; index < G.g[v].size(); ++index) {
+                if (G.g[v][index]) {
+
+                    return index;
                 }
             }
-
             return -1;
         }
 
         int next() {
-            index++;
-            for (int i = index; i < G.g[v].size(); ++i) {
-                if (G.g[v][i]) {
-                    index = i;
-                    return i;
+            for (++index; index < G.g[v].size(); ++index) {
+                if (G.g[v][index]) {
+                    return index;
                 }
             }
             index = G.g[v].size();
