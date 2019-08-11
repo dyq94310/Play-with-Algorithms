@@ -61,6 +61,46 @@ public:
         assert(w >= 0 && w < n);
         return g[v][w];
     }
+
+    class adjIterator {
+    private:
+        DenseGraph &G;
+        int v;
+        int index;
+    public:
+        adjIterator(DenseGraph &graph, int v) : G(graph) {
+            this->v = v;
+            this->index = 0;
+        }
+
+        int begin() {
+            index = 0;
+            for (int i = 0; i < G.g[v].size(); ++i) {
+                if (G.g[v][i]) {
+                    index = i;
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        int next() {
+            index++;
+            for (int i = index; i < G.g[v].size(); ++i) {
+                if (G.g[v][i]) {
+                    index = i;
+                    return i;
+                }
+            }
+            index = G.g[v].size();
+            return -1;
+        }
+
+        bool end() {
+            return index >= G.g[v].size();
+        }
+    };
 };
 
 #endif //GRAPH_DENSEGRAPH_H

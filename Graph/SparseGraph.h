@@ -77,7 +77,7 @@ public:
     public:
         adjIterator(SparseGraph &graph, int v) : G(graph) {
             this->v = v;
-            this->index = index;
+            this->index = 0;
         }
 
         int begin() {
@@ -97,9 +97,8 @@ public:
         }
 
         bool end() {
-            return index <= G.g[v].size();
+            return index >= G.g[v].size();
         }
-
     };
 };
 
